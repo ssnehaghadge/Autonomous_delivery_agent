@@ -19,7 +19,7 @@ Experimental Comparison: Comprehensive testing across multiple map sizes
 Dynamic Replanning: Handles moving obstacles and changing environments
 
 Project Structure
-text
+
 autonomous_delivery_agent/
 ├── src/                 # Source code
 │   ├── __init__.py     # Package initialization
@@ -43,6 +43,8 @@ autonomous_delivery_agent/
 ├── requirements.txt    # Python dependencies
 ├── requirements.md     # Detailed requirements
 └── README.md          # This file
+
+
 Installation
 Clone the repository:
 
@@ -93,10 +95,9 @@ python examples.py
 
 # Run specific examples
 python -c "from examples import basic_example; basic_example()"
+
 Map Format
 Map files use the following format:
-
-text
 width height
 num_static_obstacles
 x1 y1
@@ -105,9 +106,8 @@ x2 y2
 terrain_grid (space-separated values for each row)
 num_moving_obstacles
 x y path_length x1 y1 x2 y2 ... speed
-Example:
 
-text
+Example:
 10 10
 3
 3 3
@@ -125,6 +125,7 @@ text
 1 1 1 1 1 1 1 1 1 1
 1
 3 3 8 3 3 3 4 3 5 3 5 4 5 5 4 5 4 3 2
+
 Algorithms
 1. BFS (Breadth-First Search)
 Type: Uninformed search
@@ -163,24 +164,27 @@ Advantages: Handles changing environments well
 Disadvantages: Not guaranteed optimal
 
 API Reference
+
 Core Classes
 Grid
-python
+
 grid = Grid(width, height)
 grid.add_obstacle(x, y)
 grid.set_terrain(x, y, terrain_type)
 grid.load_from_file(filename)
 grid.save_to_file(filename)
+
 DeliveryAgent
-python
+
 agent = DeliveryAgent(grid, start_x, start_y, fuel=100)
 agent.add_package(x, y)
 agent.add_destination(x, y)
 agent.deliver_packages(algorithm)
 agent.plan_path_to(goal_x, goal_y, algorithm)
 agent.execute_step()
+
 Path Planners
-python
+
 # Available planners:
 # - BFSPlanner(grid)
 # - UCSPlanner(grid)
@@ -189,6 +193,7 @@ python
 
 planner = AStarPlanner(grid)
 path = planner.plan(start_x, start_y, goal_x, goal_y)
+
 Terrain Types
 TerrainType.ROAD (cost: 1)
 
@@ -200,8 +205,6 @@ TerrainType.WATER (cost: 10)
 
 Testing
 Run the test suite:
-
-bash
 python -m unittest discover tests
 Test coverage includes:
 
@@ -215,8 +218,6 @@ Obstacle and terrain handling
 
 Examples
 The project includes comprehensive examples in examples.py:
-
-bash
 # Run all examples
 python examples.py
 
@@ -225,37 +226,26 @@ python examples.py
 # ✅ Dynamic Obstacles: Handled moving obstacles!
 # ✅ Multiple Packages: All packages delivered!
 # 📊 Algorithm Comparison: A* was fastest!
+
 Results Format
 Experimental results are saved in JSON format with:
-
 Success status
-
 Path cost
-
 Fuel consumption
-
 Execution time
-
 Algorithm performance metrics
 
 Dynamic Replanning
 The system supports dynamic replanning for:
-
 Moving obstacles with predictable paths
-
 Changing terrain costs
-
 Real-time obstacle appearance
-
 Fuel constraints and optimization
 
 Contributing
 Fork the repository
-
 Create a feature branch
-
 Add tests for new functionality
-
 Submit a pull request
 
 License
@@ -273,24 +263,16 @@ bibtex
 }
 Support
 For questions and support:
-
 Create an issue on GitHub
-
 Check the examples for usage patterns
-
 Review the API documentation
 
 Future Enhancements
 GUI visualization
-
 More path planning algorithms
-
 Multi-agent coordination
-
 Real-time simulation
-
 Advanced terrain types
-
 Machine learning integration
 
 Note: This project was developed as part of an academic course on artificial intelligence and autonomous systems.
